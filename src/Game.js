@@ -9,7 +9,7 @@ function Game({ players, room, orientation, cleanup }) {
   const [fen, setFen] = useState(chess.fen()); // <- 2
   const [over, setOver] = useState("");
 
-  const baseURL = "http://localhost:5000/ChessMove";
+  const baseURL = "http://localhost:5178/ChessMove";
 
   // ... Make Move
 const makeAMove = useCallback(
@@ -58,8 +58,8 @@ const makeAMove = useCallback(
     if (move === null) return false;
     
     const response = await axios.post(baseURL, {"fenString": chess.fen()} );
-    moveData.from = response.data.fromSq;
-    moveData.to = response.data.toSq;
+    // moveData.from = response.data.fromSq;
+    // moveData.to = response.data.toSq;
 
     move = makeAMove(response.data);
 
